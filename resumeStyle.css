@@ -1,0 +1,59 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+.resume-container {
+    width: 100vw;
+    height: 100vh;
+    margin: 30px;
+}
+
+.work-experience {
+    width: 100%;
+    max-width: 1200px; /* Maksimum genişlik */
+    margin: 0 auto; /* Orta hizalama */
+    display: flex;
+}
+
+.positions {
+    margin-top: 5%;
+    display: grid;
+    gap: 30px; /* Sütunlar arasında 30px boşluk */
+    margin-left: 30%;
+    margin-right: 2%;
+
+    grid-template-columns: 10%,0 ; 
+
+}
+
+.position {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 20% ; /* Her position kendi içinde bir grid konteyner */
+    align-items: start; /* İçeriklerin başlangıcından itibaren hizala */
+    margin-bottom: 20px; /* Her position arası boşluk */
+}
+
+.position span {
+    /* Tarihleri bold yap ve hizala */
+    font-weight: bold;
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.position strong {
+    /* Başlık için stil */
+    grid-column: 2;
+    grid-row: 1;
+    font-size: 1.2em;
+}
+
+.position p {
+    /* Paragraf için stil */
+    grid-column: 2;
+    grid-row: 2;
+    margin-top: 10px; /* Başlık ile arasında boşluk */
+}
