@@ -29,29 +29,38 @@ h2{
     width: 70%;
     margin-top: 5%;
     display: grid;
-    gap: 40px; /* Sütunlar arasında 30px boşluk */
+    gap: 25px; /* Sütunlar arasında 25px boşluk */
     margin-left: 10%;
     grid-template-columns: 10%,0 ; 
 
 }
 
 .position {
-    width: 100%;
+    width: 70%;
+    margin-top: 5%;
     display: grid;
-    grid-template-columns: 20% ; /* Her position kendi içinde bir grid konteyner */
-    align-items: start; /* İçeriklerin başlangıcından itibaren hizala */
-    margin-bottom: 20px; /* Her position arası boşluk */
+    gap: 25px; /* Sütunlar arasında 25px boşluk */
+    margin-left: 10%;
 }
 
 .position span {
     /* Tarihleri bold yap ve hizala */
+    padding: 1px;
     font-weight: bold;
     grid-column: 1;
     grid-row: 1;
 }
+.position small {
+    padding: 1px;
+    font-weight: bold;
+    grid-column: 1;
+    grid-row: 2;
+}
+
 
 .position strong {
     /* Başlık için stil */
+    padding: 1px;
     grid-column: 2;
     grid-row: 1;
     font-size: 1.2em;

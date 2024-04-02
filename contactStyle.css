@@ -13,22 +13,22 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    width: 80%;
+    width: 100%;
     max-width: 1000px;
-    margin: auto;
+    margin: 10%;
+
 }
 
 .contact-info {
+    
     width: 40%;
 }
 
 .contact-form {
-    width: 60%;
+
+    width: 50%;
 }
 
-.info p {
-    margin: 10px 0;
-}
 
 input[type="text"],
 input[type="email"],
@@ -49,13 +49,13 @@ textarea {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    width: 100%;
+    width: 80%;
 }
 
 .form-group input[type="text"],
 .form-group input[type="email"],
 .form-group textarea {
-    flex-basis: 48%; /* Two inputs per row */
+    flex-basis: 80%; /* Two inputs per row */
 }
 
 .submit-btn {
