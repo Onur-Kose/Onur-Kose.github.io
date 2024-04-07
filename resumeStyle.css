@@ -63,3 +63,40 @@ h2{
     grid-row: 2;
     margin-top: 10px; /* Başlık ile arasında boşluk */
 }
+.skill-experience{
+    width: 100%;
+    max-width: 1200px; /* Maksimum genişlik */
+    margin: 0 auto; /* Orta hizalama */
+    display: flex;
+    justify-content:space-between;
+    flex-wrap: wrap;
+}
+.my-skills{
+    width: 70%;
+    margin-top: 65px;
+
+}
+.skills {
+
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px; /* Her yetkinlik arası boşluk */
+}
+.skill {
+
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px; /* Her yetkinlik arası boşluk */
+    margin-left: 10%;
+}
+
+.skills strong {
+    /* Başlık için stil */
+    font-size: 1.2em;
+    margin-top: 5px; /* Başlık ile arasında boşluk */
+}
+
+.skills p {
+    /* Paragraf için stil */
+    margin-top: 10px; /* Başlık ile arasında boşluk */
+}
