@@ -1,0 +1,13 @@
+.project-container
+{
+    margin: 5%;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+}
+.project-description{
+    width: 75%;
+}
+.project-img{
+    width: 15%;
+}
