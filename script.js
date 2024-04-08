@@ -17,10 +17,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
   window.onload = function() {
     var url = window.location.href;
-    var queryString = url.substring(url.indexOf("?") + 1);
-    var messageText = queryString ? decodeURIComponent(queryString) : "";
-    var messageTextArea = document.getElementById('message');
-    var subject = document.getElementById('subject');
-    subject.value = "Ayrıntılı bilgi"
-    messageTextArea.value = messageText + "\" projeniz hakkında ayrıntılı bilgi alabilir miyim?";
+    if(url.includes("?")){
+      var queryString = url.substring(url.indexOf("?") + 1);
+      var messageText = queryString ? decodeURIComponent(queryString) : "";
+      var messageTextArea = document.getElementById('message');
+      var subject = document.getElementById('subject');
+      subject.value = "Ayrıntılı bilgi"
+      messageTextArea.value = messageText + "\" projeniz hakkında ayrıntılı bilgi alabilir miyim?";
+    }
 }
