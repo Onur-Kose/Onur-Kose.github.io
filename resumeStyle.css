@@ -7,7 +7,6 @@ body {
 
 .resume-container {
     width: 95vw;
-    height: 100vh;
     margin: 30px;
 }
 
@@ -101,7 +100,8 @@ h2{
     margin-top: 10px; /* Başlık ile arasında boşluk */
 }
 .back-button {
-
+    position: sticky;
+    top: 5px;
     color: white; /* Butonun yazı rengi */
     border: none; /* Kenarlık kaldırıldı */
     border-radius: 50%; /* Kenarları yuvarlaklaştır */
@@ -110,6 +110,8 @@ h2{
     width: 50px;
     height: 50px;
     text-align: center;
-
-
+    transition: background-color 0.5s ease; /* Geçiş özelliği */
+}
+.back-button:hover{
+    background-color: black;
 }
