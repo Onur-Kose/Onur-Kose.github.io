@@ -116,3 +116,51 @@ h2{
 .back-button:hover{
     background-color: black;
 }
+@media screen and (max-width: 470px) {
+    /* Genel düzenlemeler */
+    .skills strong, .skills p {
+        font-size: 14px;
+    }
+
+    .positions {
+        width: 70%;
+        margin-top: 5%;
+        display: grid;
+        gap: 25px; /* Sütunlar arasında 30px boşluk */
+        margin-left: 10%;
+        grid-template-columns: 10%,0 ; 
+    
+    }
+    
+    .position {
+        width: 100%;
+        align-items: start; /* İçeriklerin başlangıcından itibaren hizala */
+        margin-bottom: 20px; /* Her position arası boşluk */
+    }
+    
+    .position span {
+        /* Tarihleri bold yap ve hizala */
+        font-weight: bold;
+        grid-column: 2;
+        grid-row: 1;
+    }
+    
+    .position strong {
+        /* Başlık için stil */
+        grid-column: 2;
+        grid-row: 2;
+        font-size: 1.2em;
+    }
+    
+    .position p {
+        /* Paragraf için stil */
+        grid-column: 2;
+        grid-row: 3;
+        margin-top: 10px; /* Başlık ile arasında boşluk */
+    }
+
+    /* Yetkinlikler bölümü için düzenlemeler */
+    .my-skills {
+        width: 100%;
+    }
+}
