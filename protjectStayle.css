@@ -7,7 +7,25 @@
 }
 .project-description{
     width: 75%;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 .project-img{
     width: 45%;
+}
+.project-description strong{
+    font-size: larger;
+}
+.back-button {
+
+    color: white; /* Butonun yazı rengi */
+    border: none; /* Kenarlık kaldırıldı */
+    border-radius: 50%; /* Kenarları yuvarlaklaştır */
+    cursor: pointer; /* İmleci pointer yap */
+    font-size: 16px; /* Yazı boyutu */
+    width: 50px;
+    height: 50px;
+    text-align: center;
+
+
 }
