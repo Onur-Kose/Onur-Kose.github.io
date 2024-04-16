@@ -1,13 +1,14 @@
 body, html {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background: #fff;
+    font-family: 'Poppins', sans-serif; /* Modern bir font kullanımı */
+    background: #f9f9f9; /* Daha yumuşak bir arka plan rengi */
+    color: #333; /* Genel metin rengi */
 }
 
 .container {
     text-align: center;
     padding: 50px;
-    margin-top:10%;
+    margin-top:7%;
 }
 
 .profile {
@@ -17,18 +18,24 @@ body, html {
     justify-content: start; /* içerikleri yatay olarak ortalar */
 }
 
-.my-photo,
+
 .my-text {
-    flex: 1; /* flex öğelerinin esnekliğini belirler */
+    flex: 1.5; /* flex öğelerinin esnekliğini belirler */
     min-width: 300px; /* minimum genişlik belirlenerek ekran küçüldüğünde alt alta düzen sağlanır */
+    margin-right: 7%;
+}
+.my-photo{
+    flex: 1; /* flex öğelerinin esnekliğini belirler */
+    min-width: 240px; /* minimum genişlik belirlenerek ekran küçüldüğünde alt alta düzen sağlanır */
 }
 .profile-picture {
     border-radius: 50%;
     width: 100%; /* genişlik yüzde olarak belirlendi */
-    max-width: 300px; /* maksimum genişlik */
+    max-width: 280px; /* maksimum genişlik */
     max-height: 300px; /* maksimum genişlik */
 
-    border: 6px solid #ddd;
+    border: 4px solid #5bc0de; /* Kenarlık rengini değiştir */
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.1); /* Hafif bir gölge ekle */
     margin-bottom: 30px;
     aspect-ratio: 1 / 1; /* genişlik ve yükseklik oranını 1:1 yapar */
 }
@@ -37,7 +44,7 @@ body, html {
     font-size: 1.5em;
     margin-bottom: 20px;
     text-align: left; /* Metni sola yaslar */
-    margin-left: 30px ;
+    margin-left: 20px ;
 }
 .buttons .button {
     border: none;
