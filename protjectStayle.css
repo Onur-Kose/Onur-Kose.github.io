@@ -1,0 +1,34 @@
+.project-container
+{
+    margin: 5%;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+}
+.project-description{
+    width: 75%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+.project-img{
+    width: 45%;
+}
+.project-description strong{
+    font-size: larger;
+}
+.back-button {
+    position: sticky;
+    top: 5px;
+    color: white; /* Butonun yazı rengi */
+    border: none; /* Kenarlık kaldırıldı */
+    border-radius: 50%; /* Kenarları yuvarlaklaştır */
+    cursor: pointer; /* İmleci pointer yap */
+    font-size: 16px; /* Yazı boyutu */
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    transition: background-color 0.5s ease; /* Geçiş özelliği */
+}
+.back-button:hover{
+    background-color: black;
+}

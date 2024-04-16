@@ -4,14 +4,92 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="protjectStayle.css">
 </head>
 <body>
     <div class="projects-container">
+        <button  title="Bir önceki sayfaya dön" onclick="history.back()" class="back-button">◀ </button>
+        <h1>Projelerim</h1>
         <div class="project-container">
             <div class="project-description">
-                deneme
+                <strong>Proje ve Tasarımcı Takip ve Planlama Programı API</strong>
+                <p>Astor Enerji firması için oluşturduğum bu programda rol bazlı bir yetkilendirme ile
+                    sipariş olan projeleri görebilir, yeni proje ekleyebilir, silebilir ve teklifi kim yaptı, hangi 
+                    ülkeye hangi müşteriye gidecek gibi özel bilgilerini görebilirsiniz. Yine aynı şekilde bu projenin
+                    elektrik tasarımını kim yapacak, mekanik tasarımını kim yapacak, tasarımı hangi tasarımcı kaç günde yapar, 
+                    projeyi atayacağım kişide kaç proje var ve eğer atarsam hangi günde bitirir gibi özellikler ile
+                    hem takip hem de planlama yapabilirsiniz. Proje aktif olarak kullanılmaktadır. 
+                </p>
+                <p>Her geçen gün kullanıcı ve şirket istekleri doğrultusunda 
+                    yeni özellikler ve güncellemeler yapıyorum.</p>
             </div>
-            <img class="project-img" src="" alt="">
+            <a href="contact.html?Proje ve Tasarımcı Takip ve Planlama Programı API"><img class="project-img" src="link.png" alt="Proje linki"></a>
+        </div>
+        <div class="project-container">
+            <div class="project-description">
+                <strong>Proje ve Tasarımcı Takip ve Planlama Programı Ön Yüzü</strong>
+                <p>Astor Enerji firması için oluşturduğum Proje ve Tasarımcı Takip ve Planlama Programı API
+                    programı için React.Js kullanarak oluşturduğum bir ön yüz programı. Program içerisinde kullanıcıların 
+                    rol ve yetkilerine bağlı olarak admin, müdür, elektrik takım yöneticisi, mekanik takım yöneticisi, 
+                    elektrik tasarım üyesi, mekanik tasarım üyesi ve performans değerlendiricisi olmak üzere 7 farklı alan bulunmaktadır.
+                    Projede npm, yarn, Axios, sweetAlert, toastify, scss, timeline-chart gibi birçok paket ve paket 
+                    yükleyicinin yanı sıra kendi hata yönetimi, rol yönetimi gibi class ve objelerim de bulunmaktadır. Proje aktif olarak kullanılmaktadır
+                    ve yeni özellikler, kullanıcı dostu tasarımlar eklenmektedir. 
+                </p>   
+            </div>
+            <a href="contact.html?Proje ve Tasarımcı Takip ve Planlama Programı Ön Yüzü"><img class="project-img" src="link.png" alt="Proje linki"></a>
+        </div>
+        <div class="project-container">
+            <div class="project-description">
+                <strong>Bilge Adam Kampüs (Takım Çalışması)</strong>
+                <p>Bilge Adam Teknoloji bünyesinde ekip olarak Agile Scrum metodolojisini kullanarak 
+                    .NET Web API projesi ve React.js ile ön yüz tasarımı gerçekleştirdik. Proje, 
+                    BilgeAdam Akademi ve özel okullarda kullanılmak üzere bir öğrenci, öğretmen ve 
+                    ders yönetim sistemi olarak tasarlandı. Proje kapsamında hem back-end hem de front-end 
+                    geliştirmesi yapıldı. Ayrıca MSSQL veritabanı, Entity Framework Core ORM, Identity ve 
+                    Fluent Validation gibi araçlar da projede kullanıldı. Proje, katmanlı mimari olarak Onion 
+                    Architecture kullanılarak tasarlandı.
+                </p>
+            </div>
+            <a href="contact.html?Bilge Adam Kampüs (Takım Çalışması)"><img class="project-img" src="link.png" alt="Proje linki"></a>
+        </div>
+        <div class="project-container">
+            <div class="project-description">
+                <strong>İnsan Kaynakları Yönetim Programı (Takım Çalışması)</strong>
+                <p>Bu projede Identity Framework ve ASP.Net Core altyapısı ile MVC Tasarım Deseni kullanıldı.
+                    Front-End geliştirmesinde HTML5, CSS, JavaScript ve Bootstrap teknolojileri tercih edildi. 
+                    Projeyi geliştirirken Agile/Scrum metodolojisinden yararlanıldı ve Azure DevOps'un sunduğu olanaklardan faydalanıldı. 
+                    Ayrıca MSSQL veritabanı ve Entity Framework Core ORM aracı kullanılarak veritabanı işlemleri gerçekleştirildi.
+                    Projede Admin, Yönetici ve Çalışan olmak üzere üç farklı kullanıcı rolü bulunmaktadır.
+                </p>
+            </div>
+            <a href="contact.html?İnsan Kaynakları Yönetim Programı (Takım Çalışması)"><img class="project-img" src="link.png" alt="Proje linki"></a>
+        </div>
+        <div class="project-container">
+            <div class="project-description">
+                <strong>Kişisel Web sayfası</strong>
+                <p>Kişisel bilgilerim ve projelerim hakkında bilgiler girdiğim ve düzenli olarak güncellediğim
+                    kişisel web sayfam.
+                </p>
+            </div>
+            <a href="https://onur-kose.github.io/"><img class="project-img" src="link.png" alt="Proje linki"></a>
+        </div>
+        <div class="project-container">
+            <div class="project-description">
+                <strong>Blog Sitesi</strong>
+                <p>ASP.NET Core kullanılarak MVC Tasarım Deseni ile hazırlanmış bir web uygulamasıdır. Kullanıcıların içerik ekleyebildiği, silebildiği ve güncelleyebildiği bir blog sitesidir.</p>
+                <p>Projede Identity, MSSQL ve Entity Frameworki Bootstrap gibi araçlar ve teknolojiler de kullanılmıştır.</p>
+            </div>
+            <a href="https://github.com/Onur-Kose/Icaz.com"><img class="project-img" src="link.png" alt="Proje linki"></a>
+        </div>
+        <div class="project-container">
+            <div class="project-description">
+                <strong>Diyet Takip Projesi</strong>
+                <p>Masaüstü bir uygulama olarak hazırlanmıştır. Kullanıcı bilgilerini dikkate alarak günlük 
+                    alınması gereken kaloriyi hesaplayıp tüketilen besinlerden ne kadar kalori alındığını 
+                    hesaplayan bir uygulamadır.</p> 
+            </div>
+            <a href="https://github.com/DiyetisyenWinApp/DiyetApp"><img class="project-img" src="link.png" alt="Proje linki"></a>
         </div>
     </div>
 </body>  
