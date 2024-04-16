@@ -102,7 +102,7 @@ function decodeText(elementId, targetText, interval) {
   // Sayfa yüklendiğinde decodeText fonksiyonunu çağır
   window.onload = function() {
     const textToDecode = 'ONUR KÖSE';
-    decodeText('dynamic-name', textToDecode, 150); // ID, metin ve hız (milisaniye)
+    decodeText('dynamic-name', textToDecode, 180); // ID, metin ve hız (milisaniye)
 
     dynamicTextSequence();
   };
