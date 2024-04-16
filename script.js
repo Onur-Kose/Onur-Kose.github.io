@@ -26,3 +26,41 @@ document.addEventListener('DOMContentLoaded', function() {
       messageTextArea.value = messageText + "\" projeniz hakkında ayrıntılı bilgi alabilir miyim?";
     }
 }
+function dynamicTextSequence() {
+  const texts = ["UI UX Designer", "Frontend Developer", "Backend Developer", "Full Stack Developer"];
+  const elem = document.getElementById("dynamic-text");
+  let currentText = "";
+  let currentIndex = 0;
+  let deleteMode = false;
+
+  function updateText() {
+      if (!deleteMode) {
+          if (currentText.length < texts[currentIndex].length) {
+              currentText = texts[currentIndex].substring(0, currentText.length + 1);
+          } else {
+              if (currentIndex < texts.length - 1) {
+                  setTimeout(() => {
+                      deleteMode = true;
+                  }, 700); // Bekleme süresi, metin tamamlandıktan sonra
+              }
+          }
+      } else {
+          if (currentText.length > 0) {
+              currentText = texts[currentIndex].substring(0, currentText.length - 1);
+          } else {
+              currentIndex++;
+              deleteMode = false;
+              if (currentIndex >= texts.length) {
+                  currentIndex = 0; // Döngüyü tekrar başlat
+              }
+          }
+      }
+      elem.textContent = currentText;
+      setTimeout(updateText, deleteMode ? 50 : 110); // Silme hızı ve yazma hızı
+  }
+
+  updateText();
+}
+
+// Sayfa yüklendiğinde fonksiyonu başlat
+window.onload = dynamicTextSequence;

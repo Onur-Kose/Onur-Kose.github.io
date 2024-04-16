@@ -14,7 +14,7 @@ body, html {
     display: flex; /* flexbox kullanarak içerikleri yan yana alıyoruz */
     flex-wrap: wrap; /* ekran küçüldüğünde alt satıra geçmesini sağlıyoruz */
     align-items: center; /* içerikleri dikey olarak ortalar */
-    justify-content: center; /* içerikleri yatay olarak ortalar */
+    justify-content: start; /* içerikleri yatay olarak ortalar */
 }
 
 .my-photo,
@@ -36,8 +36,9 @@ body, html {
 .intro-text {
     font-size: 1.5em;
     margin-bottom: 20px;
+    text-align: left; /* Metni sola yaslar */
+    margin-left: 30px ;
 }
-
 .buttons .button {
     border: none;
     color: white;
@@ -72,6 +73,11 @@ body, html {
     background-color: rgb(255, 255, 255); /* Beyaz renk */
     color: black;
 }
+#dynamic-text {
+    font-weight: bold;
+    color: #333;
+    height: 25px;
+  }
 /* Duyarlı tasarım için medya sorguları */
 @media (max-width: 600px) {
     .profile {
