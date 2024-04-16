@@ -62,5 +62,47 @@ function dynamicTextSequence() {
   updateText();
 }
 
-// Sayfa yüklendiğinde fonksiyonu başlat
-window.onload = dynamicTextSequence;
+
+
+// Belirtilen metinleri sırayla gösteren fonksiyon
+function decodeText(elementId, targetText, interval) {
+    let elem = document.getElementById(elementId);
+    let currentIndex = 0;
+    elem.textContent = '';
+  
+    // Rastgele karakterler üret
+    function getRandomChar() {
+      const chars = 'abcdefghijklmnopqrstuvwxyz';
+      return chars[Math.floor(Math.random() * chars.length)];
+    }
+  
+    // Her karakter için "decode" etkisi
+    let decodeEffect = function() {
+      let text = '';
+      for (let i = 0; i < targetText.length; i++) {
+        // Eğer geçerli karaktere henüz gelmediysek rastgele karakterler kullan
+        text += i < currentIndex ? targetText[i] : getRandomChar();
+      }
+      
+      // Metni güncelle
+      elem.textContent = text;
+      
+      // Her adımda currentIndex'i artır
+      if (currentIndex <= targetText.length) {
+        setTimeout(decodeEffect, Math.random() * interval);
+        currentIndex++;
+      }
+    };
+  
+    decodeEffect();
+}
+
+
+  
+  // Sayfa yüklendiğinde decodeText fonksiyonunu çağır
+  window.onload = function() {
+    const textToDecode = 'ONUR KÖSE';
+    decodeText('dynamic-name', textToDecode, 150); // ID, metin ve hız (milisaniye)
+
+    dynamicTextSequence();
+  };
