@@ -15,69 +15,59 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  window.onload = function() {
-    var url = window.location.href;
-    if(url.includes("?")){
-      var queryString = url.substring(url.indexOf("?") + 1);
-      var messageText = queryString ? decodeURIComponent(queryString) : "";
-      var messageTextArea = document.getElementById('message');
-      var subject = document.getElementById('subject');
-      subject.value = "Ayrıntılı bilgi"
-      messageTextArea.value = messageText + "\" projeniz hakkında ayrıntılı bilgi alabilir miyim?";
-    }
-}
-function dynamicTextSequence() {
-  const texts = ["UI UX Designer", "Frontend Developer", "Backend Developer", "Full Stack Developer"];
+  
+  function dynamicTextSequence() {
+    const texts = ["UI UX Designer", "Frontend Developer", "Backend Developer", "Full Stack Developer"];
   const elem = document.getElementById("dynamic-text");
   let currentText = "";
   let currentIndex = 0;
   let deleteMode = false;
 
   function updateText() {
-      if (!deleteMode) {
+    if (!deleteMode) {
           if (currentText.length < texts[currentIndex].length) {
               currentText = texts[currentIndex].substring(0, currentText.length + 1);
-          } else {
+            } else {
               if (currentIndex < texts.length - 1) {
-                  setTimeout(() => {
+                setTimeout(() => {
                       deleteMode = true;
-                  }, 700); // Bekleme süresi, metin tamamlandıktan sonra
+                    }, 700); // Bekleme süresi, metin tamamlandıktan sonra
               }
           }
       } else {
-          if (currentText.length > 0) {
+        if (currentText.length > 0) {
               currentText = texts[currentIndex].substring(0, currentText.length - 1);
-          } else {
+            } else {
               currentIndex++;
               deleteMode = false;
               if (currentIndex >= texts.length) {
                   currentIndex = 0; // Döngüyü tekrar başlat
+                }
               }
-          }
       }
       elem.textContent = currentText;
       setTimeout(updateText, deleteMode ? 50 : 110); // Silme hızı ve yazma hızı
-  }
-
-  updateText();
-}
-
-
-
-// Belirtilen metinleri sırayla gösteren fonksiyon
-function decodeText(elementId, targetText, interval) {
-    let elem = document.getElementById(elementId);
-    let currentIndex = 0;
-    elem.textContent = '';
-  
-    // Rastgele karakterler üret
-    function getRandomChar() {
-      const chars = 'abcdefghijklmnopqrstuvwxyz';
-      return chars[Math.floor(Math.random() * chars.length)];
     }
+    
+    updateText();
+  }
   
-    // Her karakter için "decode" etkisi
-    let decodeEffect = function() {
+  
+  
+  // Belirtilen metinleri sırayla gösteren fonksiyon
+function decodeText(elementId, targetText, interval) {
+  let elem = document.getElementById(elementId);
+  let currentIndex = 0;
+  elem.textContent = '';
+  
+  // Rastgele karakterler üret
+  function getRandomChar() {
+    const chars = 'abcdefghijklmnopqrstuvwxyz';
+    return chars[Math.floor(Math.random() * chars.length)];
+  }
+  
+  // Her karakter için "decode" etkisi
+  let decodeEffect = function() {
       let text = '';
       for (let i = 0; i < targetText.length; i++) {
         // Eğer geçerli karaktere henüz gelmediysek rastgele karakterler kullan
@@ -98,11 +88,22 @@ function decodeText(elementId, targetText, interval) {
 }
 
 
-  
-  // Sayfa yüklendiğinde decodeText fonksiyonunu çağır
-  window.onload = function() {
-    const textToDecode = 'ONUR KÖSE';
-    decodeText('dynamic-name', textToDecode, 180); // ID, metin ve hız (milisaniye)
+function urlDecoder() {
+  var url = window.location.href;
+  if (url.includes("?")) {
+      var queryString = url.substring(url.indexOf("?") + 1);
+      var decodedQuery = decodeURIComponent(queryString).replace(/\+/g, ' '); // URL kodlamasını çöz ve '+' karakterlerini boşluk ile değiştir
+      var subjectField = document.getElementById('subject');
+      var messageField = document.getElementById('message');
 
-    dynamicTextSequence();
+      subjectField.value = "Ayrıntılı bilgi"; // Varsayılan bir konu başlığı ayarla
+      messageField.value = decodedQuery + " projeniz hakkında ayrıntılı bilgi alabilir miyim?";
+  }
+};
+// Sayfa yüklendiğinde decodeText fonksiyonunu çağır
+window.onload = function() {
+  urlDecoder();
+  const textToDecode = 'ONUR KÖSE';
+  decodeText('dynamic-name', textToDecode, 180); // ID, metin ve hız (milisaniye)
+  dynamicTextSequence();
   };
