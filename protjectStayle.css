@@ -16,6 +16,11 @@
 .project-description strong{
     font-size: larger;
     cursor: pointer;
+    text-decoration: none;
+    color: black;
+}
+.project-description strong:hover {
+    text-decoration: none;
 }
 .back-button {
     position: sticky;
