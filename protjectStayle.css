@@ -15,6 +15,7 @@
 }
 .project-description strong{
     font-size: larger;
+    cursor: pointer;
 }
 .back-button {
     position: sticky;
@@ -31,4 +32,43 @@
 }
 .back-button:hover{
     background-color: black;
+}
+@media screen and (max-width: 770px) {
+    .project-container
+    {
+        margin: 1%;
+        width: 95%;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+    .project-description{
+        width: 75%;
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+    .project-img{
+        width: 0px;
+    }
+    .project-description strong{
+        font-size: larger;
+    }
+    .back-button {
+        position: sticky;
+        top: 5px;
+        color: white; /* Butonun yazı rengi */
+        border: none; /* Kenarlık kaldırıldı */
+        border-radius: 50%; /* Kenarları yuvarlaklaştır */
+        cursor: pointer; /* İmleci pointer yap */
+        font-size: 16px; /* Yazı boyutu */
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        transition: background-color 0.5s ease; /* Geçiş özelliği */
+    }
+    .back-button:hover{
+        background-color: black;
+    }
+
+
 }

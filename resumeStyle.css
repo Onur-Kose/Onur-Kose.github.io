@@ -24,7 +24,7 @@ body {
 .work-experience {
     width: 95%;
     max-width: 1200px; /* Maksimum genişlik */
-    margin: 0 1%; /* Orta hizalama */
+    margin: 0 1px; /* Orta hizalama */
     display: flex;
     justify-content:space-between;
     flex-wrap: wrap;
@@ -36,11 +36,11 @@ h2{
     width: 20%;
 }
 .positions {
-    width: 70%;
+    width: 95%;
     margin-top: 5%;
     display: grid;
     gap: 25px; /* Sütunlar arasında 30px boşluk */
-    margin-left: 10%;
+    margin-left: 1%;
     grid-template-columns: 10%,0 ; 
 
 }
@@ -135,7 +135,7 @@ h2{
 .back-button:hover{
     background-color: black;
 }
-@media screen and (max-width: 470px) {
+@media screen and (max-width: 690px) {
     /* Genel düzenlemeler */
     .skills strong, .skills p {
         font-size: 14px;
