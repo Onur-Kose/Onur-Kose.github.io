@@ -1,7 +1,7 @@
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    margin: 0;
+    margin: 1%;
     padding: 0;
     min-width: 450px;
 }
@@ -22,9 +22,9 @@ body {
 }
 
 .work-experience {
-    width: 100%;
+    width: 95%;
     max-width: 1200px; /* Maksimum genişlik */
-    margin: 0 auto; /* Orta hizalama */
+    margin: 0 1%; /* Orta hizalama */
     display: flex;
     justify-content:space-between;
     flex-wrap: wrap;
@@ -144,14 +144,16 @@ h2{
     .positions {
         width: 70%;
         margin-top: 5%;
-        display: grid;
-        gap: 25px; /* Sütunlar arasında 30px boşluk */
-        margin-left: 10%;
-        grid-template-columns: 10%,0 ; 
+        display: flex;
+        flex-wrap: wrap;
+
     
     }
     
     .position {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
         width: 100%;
         align-items: start; /* İçeriklerin başlangıcından itibaren hizala */
         margin-bottom: 20px; /* Her position arası boşluk */
@@ -160,8 +162,7 @@ h2{
     .position span {
         /* Tarihleri bold yap ve hizala */
         font-weight: bold;
-        grid-column: 2;
-        grid-row: 1;
+
     }
     
     .position strong {
