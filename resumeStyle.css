@@ -113,6 +113,7 @@ h2{
     /* Başlık için stil */
     font-size: 1.2em;
     margin-top: 5px; /* Başlık ile arasında boşluk */
+    color: #0847d6;
 }
 
 .skills p {
