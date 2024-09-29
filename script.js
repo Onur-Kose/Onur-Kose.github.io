@@ -104,6 +104,6 @@ function urlDecoder() {
 window.onload = function() {
   urlDecoder();
   const textToDecode = 'ONUR KÖSE';
-  decodeText('dynamic-name', textToDecode, 180); // ID, metin ve hız (milisaniye)
+  decodeText('dynamic-name', textToDecode, 220); // ID, metin ve hız (milisaniye)
   dynamicTextSequence();
   };
