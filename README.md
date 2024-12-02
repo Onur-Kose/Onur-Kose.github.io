@@ -1,7 +1,7 @@
 # Kişisel Web Sayfam
 
 Bu proje, kişisel web sayfamı oluşturmak için kullanılan kaynak dosyalarını içerir. Sayfa, kişisel portföyümü sergilemek için tasarlanmıştır.
-Adres:'https://onur-kose.github.io/'
+Adres:'https://onur-kose.github.io/' veya 'https://www.onurkose.com.tr'
 ## Kullanılan Teknolojiler
 
 - HTML
@@ -23,7 +23,7 @@ Bu proje MIT Lisansı altında lisanslanmıştır. Daha fazla bilgi için LICENS
 
 ## İletişim Bilgileri
 
-- E-posta: eemkoseonur@gmail.com
+- E-posta: contactme@onurkose.com.tr
 
 ## Yardım ve Destek
 
