@@ -1,0 +1,561 @@
+/* ===== ROAD TRIP PORTFOLIO — road.css ===== */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600&display=swap');
+
+/* ── Reset & Base ───────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #0a0a0a;
+  --road:      #1a1a1a;
+  --road-edge: #2a2a2a;
+  --line:      #f0c040;
+  --accent:    #00ff88;
+  --accent2:   #00ccff;
+  --text:      #e0e0e0;
+  --card-bg:   rgba(255,255,255,0.05);
+  --card-border:rgba(255,255,255,0.12);
+  --danger:    #ff4466;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+}
+
+/* ── Screens ────────────────────────────────────────────────── */
+.screen {
+  position: fixed;
+  inset: 0;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+.screen.active { display: flex; }
+
+/* ── Road Canvas ────────────────────────────────────────────── */
+#road-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+}
+
+/* ── Overlay (shared dark bg for road screens) ─────────────── */
+.road-overlay {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0) 40%, rgba(10,10,10,0) 60%, rgba(10,10,10,0.85) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ── Car ────────────────────────────────────────────────────── */
+#car {
+  position: fixed;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 52px;
+  z-index: 20;
+  filter: drop-shadow(0 0 12px rgba(0,255,136,0.6));
+  transition: left 0.6s ease, bottom 0.5s ease, transform 0.6s ease;
+  pointer-events: none;
+}
+#car.moving {
+  animation: carBounce 0.3s ease infinite alternate;
+}
+@keyframes carBounce {
+  from { bottom: 80px; }
+  to   { bottom: 88px; }
+}
+
+/* ── Portal Screen ──────────────────────────────────────────── */
+#portal-screen {
+  background: radial-gradient(ellipse at center, #0d1f1a 0%, var(--bg) 70%);
+  z-index: 10;
+}
+
+.portal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+  padding: 20px;
+  max-width: 680px;
+  width: 100%;
+}
+
+.profile-ring {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  padding: 4px;
+  background: conic-gradient(var(--accent), var(--accent2), var(--line), var(--accent));
+  animation: spinRing 4s linear infinite;
+  flex-shrink: 0;
+}
+@keyframes spinRing {
+  to { transform: rotate(360deg); }
+}
+.profile-ring img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  border: 3px solid var(--bg);
+}
+
+.portal-name {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(1.6rem, 5vw, 2.6rem);
+  font-weight: 900;
+  color: var(--accent);
+  text-shadow: 0 0 20px rgba(0,255,136,0.5);
+  letter-spacing: 0.12em;
+}
+
+.portal-bio {
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: #aaa;
+  max-height: 130px;
+  overflow-y: auto;
+  padding: 0 8px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) transparent;
+}
+
+.road-buttons {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.road-btn {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 14px 22px;
+  border: 2px solid var(--accent);
+  border-radius: 8px;
+  background: rgba(0,255,136,0.08);
+  color: var(--accent);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+}
+.road-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--accent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.road-btn:hover {
+  background: rgba(0,255,136,0.2);
+  box-shadow: 0 0 18px rgba(0,255,136,0.5), 0 0 36px rgba(0,255,136,0.2);
+  transform: translateY(-2px);
+}
+.road-btn.visited {
+  border-color: var(--line);
+  color: var(--line);
+  background: rgba(240,192,64,0.08);
+}
+.road-btn.visited:hover {
+  box-shadow: 0 0 18px rgba(240,192,64,0.5);
+}
+.road-btn.projects-btn { border-color: var(--accent2); color: var(--accent2); background: rgba(0,204,255,0.08); }
+.road-btn.projects-btn:hover { box-shadow: 0 0 18px rgba(0,204,255,0.5); background: rgba(0,204,255,0.2); }
+.road-btn.projects-btn.visited { border-color: var(--line); color: var(--line); background: rgba(240,192,64,0.08); }
+.road-btn.contact-btn { border-color: #ff9944; color: #ff9944; background: rgba(255,153,68,0.08); }
+.road-btn.contact-btn:hover { box-shadow: 0 0 18px rgba(255,153,68,0.5); background: rgba(255,153,68,0.2); }
+.road-btn.contact-btn.visited { border-color: var(--line); color: var(--line); background: rgba(240,192,64,0.08); }
+
+/* ── Road Screen ────────────────────────────────────────────── */
+#road-screen {
+  z-index: 5;
+  justify-content: flex-end;
+  padding-bottom: 160px;
+  pointer-events: none;
+}
+#road-screen.active { display: flex; }
+
+/* ── Stop Card ──────────────────────────────────────────────── */
+#stop-card {
+  pointer-events: all;
+  position: relative;
+  z-index: 30;
+  width: min(640px, 92vw);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 28px 32px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.04);
+  animation: cardSlideUp 0.45s cubic-bezier(0.34,1.56,0.64,1) both;
+  max-height: 55vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) transparent;
+}
+@keyframes cardSlideUp {
+  from { opacity: 0; transform: translateY(60px) scale(0.95); }
+  to   { opacity: 1; transform: translateY(0)   scale(1); }
+}
+
+.stop-label {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.stop-label .stop-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+  animation: pulse 1.5s ease infinite;
+}
+@keyframes pulse {
+  0%,100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.5; transform: scale(1.4); }
+}
+
+.stop-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(1rem, 3vw, 1.35rem);
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.stop-subtitle {
+  font-size: 0.82rem;
+  color: var(--line);
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.stop-body {
+  font-size: 0.88rem;
+  line-height: 1.75;
+  color: #c0c0c0;
+}
+
+/* Skills code block */
+.skills-block {
+  background: rgba(0,0,0,0.4);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 16px 20px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.8rem;
+  color: #a0d0b0;
+  line-height: 1.9;
+  white-space: pre-wrap;
+}
+.skills-key  { color: var(--accent2); }
+.skills-val  { color: var(--line); }
+
+/* Progress indicator */
+.stop-progress {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.stop-pip {
+  width: 24px; height: 5px;
+  border-radius: 3px;
+  background: rgba(255,255,255,0.12);
+  transition: background 0.3s;
+}
+.stop-pip.done { background: var(--accent); box-shadow: 0 0 6px var(--accent); }
+.stop-pip.active { background: var(--line); box-shadow: 0 0 6px var(--line); }
+
+/* Card action buttons */
+.card-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.btn-next {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 11px 24px;
+  border: 2px solid var(--accent);
+  border-radius: 8px;
+  background: rgba(0,255,136,0.1);
+  color: var(--accent);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+.btn-next:hover {
+  background: rgba(0,255,136,0.25);
+  box-shadow: 0 0 16px rgba(0,255,136,0.4);
+  transform: translateY(-1px);
+}
+
+.btn-drawer {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 11px 24px;
+  border: 2px solid var(--accent2);
+  border-radius: 8px;
+  background: rgba(0,204,255,0.1);
+  color: var(--accent2);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+.btn-drawer:hover {
+  background: rgba(0,204,255,0.25);
+  box-shadow: 0 0 16px rgba(0,204,255,0.4);
+  transform: translateY(-1px);
+}
+
+/* ── Portal Exit Card ───────────────────────────────────────── */
+.portal-exit-card {
+  text-align: center;
+}
+.portal-exit-card .portal-gate {
+  font-size: 4rem;
+  display: block;
+  margin-bottom: 12px;
+  animation: portalSpin 3s linear infinite;
+  filter: drop-shadow(0 0 20px rgba(0,255,136,0.8));
+}
+@keyframes portalSpin {
+  0%   { transform: rotate(0deg)   scale(1); filter: drop-shadow(0 0 20px rgba(0,255,136,0.8)) hue-rotate(0deg); }
+  50%  { transform: rotate(180deg) scale(1.1); filter: drop-shadow(0 0 30px rgba(0,204,255,0.9)) hue-rotate(120deg); }
+  100% { transform: rotate(360deg) scale(1); filter: drop-shadow(0 0 20px rgba(0,255,136,0.8)) hue-rotate(360deg); }
+}
+.portal-exit-card h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.1rem;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.portal-exit-card p {
+  font-size: 0.85rem;
+  color: #888;
+  margin-bottom: 20px;
+}
+.btn-portal {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 14px 32px;
+  border: 2px solid var(--accent);
+  border-radius: 50px;
+  background: linear-gradient(135deg, rgba(0,255,136,0.15), rgba(0,204,255,0.1));
+  color: var(--accent);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px rgba(0,255,136,0.3);
+}
+.btn-portal:hover {
+  background: linear-gradient(135deg, rgba(0,255,136,0.3), rgba(0,204,255,0.2));
+  box-shadow: 0 0 36px rgba(0,255,136,0.6), 0 0 60px rgba(0,204,255,0.3);
+  transform: scale(1.05);
+}
+
+/* Road section label (top HUD) */
+#road-hud {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 40;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-shadow: 0 0 10px rgba(0,255,136,0.6);
+  background: rgba(0,0,0,0.5);
+  padding: 8px 20px;
+  border-radius: 30px;
+  border: 1px solid rgba(0,255,136,0.2);
+  display: none;
+}
+#road-hud.visible { display: block; }
+
+/* ── Side Drawer ────────────────────────────────────────────── */
+#drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 50;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  backdrop-filter: blur(3px);
+}
+#drawer-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+#side-drawer {
+  position: fixed;
+  top: 0; right: 0;
+  height: 100%;
+  width: min(440px, 100vw);
+  background: linear-gradient(135deg, #0d1a14 0%, #0a1520 100%);
+  border-left: 1px solid rgba(0,255,136,0.2);
+  z-index: 51;
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.34,1.2,0.64,1);
+  display: flex;
+  flex-direction: column;
+  padding: 32px 28px;
+  overflow-y: auto;
+  box-shadow: -8px 0 40px rgba(0,0,0,0.6);
+}
+#side-drawer.open {
+  transform: translateX(0);
+}
+
+.drawer-close {
+  position: absolute;
+  top: 18px; right: 18px;
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.05);
+  color: #fff;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+.drawer-close:hover {
+  background: rgba(255,68,102,0.15);
+  border-color: var(--danger);
+  color: var(--danger);
+  box-shadow: 0 0 12px rgba(255,68,102,0.4);
+}
+
+.drawer-tag {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent2);
+  margin-bottom: 14px;
+  padding-top: 10px;
+}
+
+.drawer-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(1rem, 3vw, 1.4rem);
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 20px;
+  line-height: 1.35;
+}
+
+.drawer-body {
+  font-size: 0.88rem;
+  line-height: 1.8;
+  color: #b0b0b0;
+  flex: 1;
+}
+
+.btn-project-link {
+  margin-top: 28px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 14px 28px;
+  border: 2px solid var(--accent2);
+  border-radius: 8px;
+  background: rgba(0,204,255,0.1);
+  color: var(--accent2);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-decoration: none;
+  align-self: flex-start;
+}
+.btn-project-link:hover {
+  background: rgba(0,204,255,0.25);
+  box-shadow: 0 0 20px rgba(0,204,255,0.5);
+  transform: translateY(-2px);
+}
+.btn-project-link.contact-link {
+  border-color: #ff9944;
+  color: #ff9944;
+  background: rgba(255,153,68,0.08);
+}
+.btn-project-link.contact-link:hover {
+  box-shadow: 0 0 20px rgba(255,153,68,0.4);
+}
+
+/* ── Transition Flash ───────────────────────────────────────── */
+#transition-flash {
+  position: fixed;
+  inset: 0;
+  background: var(--accent);
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+#transition-flash.flash {
+  animation: flashAnim 0.5s ease forwards;
+}
+@keyframes flashAnim {
+  0%   { opacity: 0.7; }
+  100% { opacity: 0; }
+}
+
+/* ── Confetti Canvas ────────────────────────────────────────── */
+#confetti-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  pointer-events: none;
+}
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  #stop-card { padding: 20px 18px; }
+  .road-buttons { gap: 10px; }
+  .road-btn { padding: 12px 16px; font-size: 0.7rem; }
+  #side-drawer { padding: 24px 18px; }
+  .portal-bio { max-height: 100px; }
+  #car { font-size: 40px; }
+}
