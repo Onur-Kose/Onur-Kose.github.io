@@ -1,52 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Onur Köse</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Onur Köse — Road Trip Portfolio</title>
+  <link rel="stylesheet" href="road.css">
+  <!-- canvas-confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
 </head>
 <body>
-    <div class="container">
-        <div class="profile">
-            <div class="my-photo">   
-                <!-- Profil resmi konteyneri -->
-                <img src="image.jpeg" alt="Profil Resmi" class="profile-picture">
-            </div>
-            <div class="my-text animate__animated animate__fadeInUp">   
-                <!-- İsim ve tanıtım konteyneri -->
-                <h1 id="dynamic-name">ONUR KÖSE</h1>
-                <p class="intro-text" id="dynamic-text"> </p>
-<p id="dynamic-long-text">
-    Elektrik ve elektronik mühendisi olarak kariyerime başladığım dönemde katıldığım projeler; 
-    insansız hava aracı ekibimiz, lazer CNC projem ve PID hız kontrol sistemi, beni yazılıma yöneltti.
-</p>
 
-<p id="dynamic-long-text">
-    Bu süreçte yazılım geliştirme aşamaları benim en çok keyif aldığım kısımlar oldu. 
-    Profesyonel olarak Ar-Ge mühendisi olarak görev yapmaya başlamama rağmen, yazılımdan vazgeçemedim 
-    ve iş yerimde gönüllü olarak robot kol programlaması gibi görevleri üstlenmeye devam ettim.
-</p>
+  <!-- Endless road canvas (always rendered in background) -->
+  <canvas id="road-canvas" aria-hidden="true"></canvas>
 
-<p id="dynamic-long-text">
-    BilgeAdam Akademi'de tamamladığım Boost yıldız yazılımcı geliştirme programının ardından, 
-    sektörde Full-Stack Developer olarak çalışmaya başladım.
-</p>
+  <!-- Gradient overlay for readability -->
+  <div class="road-overlay" aria-hidden="true"></div>
 
-<p id="dynamic-long-text">
-    Şu anda Astor Enerji firmasında Full-Stack developer olarak projeler geliştirmeye devam ediyorum. 
-    Ayrıca çeşitli kurumlarda web yazılım geliştirme ve back-end yazılım geliştirme üzerine eğitimler veriyorum.
-</p>
-                <div class="buttons">
-                    <!-- Gezinme butonları konteyneri -->
-                    <a href="resume.html" class="button resume">Deneyimler</a>
-                    <a href="projects.html" class="button projects">Projelerim</a>
-                    <a href="contact.html" class="button contact">Benimle İletişime Geçin</a>
-                </div>
-            </div>
-        </div>
-    </div>   
+  <!-- Flash transition layer -->
+  <div id="transition-flash" aria-hidden="true"></div>
+
+  <!-- HUD: current road label -->
+  <div id="road-hud" role="status" aria-live="polite"></div>
+
+  <!-- Car -->
+  <div id="car" aria-hidden="true">🚗</div>
+
+  <!-- ── PORTAL SCREEN (home / junction) ───────────────────── -->
+  <section id="portal-screen" class="screen active" aria-label="Ana Portal">
+    <div class="portal-content">
+      <div class="profile-ring">
+        <img src="image.jpeg" alt="Onur Köse profil fotoğrafı">
+      </div>
+
+      <h1 class="portal-name">ONUR KÖSE</h1>
+
+      <div class="portal-bio">
+        <p>Elektrik ve elektronik mühendisi olarak kariyerime başladığım dönemde katıldığım projeler —
+        insansız hava aracı ekibimiz, lazer CNC projem ve PID hız kontrol sistemi — beni yazılıma yöneltti.</p>
+        <p style="margin-top:8px">BilgeAdam Akademi Boost programının ardından Full-Stack Developer olarak sektöre girdim.
+        Şu anda Astor Enerji'de projeler geliştirirken çeşitli kurumlarda eğitimler veriyorum.</p>
+      </div>
+
+      <nav class="road-buttons" aria-label="Yol seçenekleri">
+        <button class="road-btn"             data-road="experience" aria-label="Deneyimler yoluna git">🏢 Deneyimler</button>
+        <button class="road-btn projects-btn" data-road="projects"   aria-label="Projelerim yoluna git">💼 Projelerim</button>
+        <button class="road-btn contact-btn"  data-road="contact"    aria-label="İletişim yoluna git">📬 İletişim</button>
+      </nav>
+    </div>
+  </section>
+
+  <!-- ── ROAD SCREEN (active road / stop cards) ────────────── -->
+  <section id="road-screen" class="screen" aria-label="Yol ekranı">
+    <div id="stop-card" role="region" aria-live="polite" aria-label="Durak bilgisi"></div>
+  </section>
+
+  <!-- ── SIDE DRAWER (project details) ─────────────────────── -->
+  <div id="drawer-overlay" aria-hidden="true"></div>
+  <aside id="side-drawer" role="complementary" aria-label="Proje detayları" aria-hidden="true">
+    <button id="drawer-close" class="drawer-close" aria-label="Paneli kapat">✕</button>
+    <div class="drawer-tag">Proje Detayı</div>
+    <h2 id="drawer-title" class="drawer-title"></h2>
+    <p id="drawer-body" class="drawer-body"></p>
+    <a id="drawer-link" class="btn-project-link" target="_blank" rel="noopener noreferrer">🚀 Projeye Git</a>
+  </aside>
+
+  <script src="road.js"></script>
 </body>
 </html>
-<script src="script.js"></script>
